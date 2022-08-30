@@ -46,7 +46,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             child: ElevatedButton(
               onPressed: () {
                Navigator.of(context).push(
-                 MaterialPageRoute(builder: (context) => const HomePage(title: 'teste',)));
+                 MaterialPageRoute(builder: (context) => const HomePage()));
               },
               child: const Text('Autenticar'),
             ),

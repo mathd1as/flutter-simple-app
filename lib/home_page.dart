@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key, required this.title}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
-  final String title;
+  final String appBarTitle = 'app bar do app';
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   // void _incrementCounter() {
   //   setState(() {
@@ -21,8 +20,11 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.appBarTitle),
+      ),
       body: Center(
-        child: ElevatedButton(child: Text('Home teste'),
+        child: ElevatedButton(child: Text('voltar'),
         onPressed: () {
           Navigator.of(context).pop();
         },
