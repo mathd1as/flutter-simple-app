@@ -15,22 +15,22 @@ class LoginPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.catching_pokemon,
+            const Icon(Icons.catching_pokemon,
              size: 98,
             ),
             TextField(
-              decoration: InputDecoration(label: Text('Login')),
+              decoration: const InputDecoration(label: Text('Login')),
               onChanged: _controller.setLogin,
             ),
             TextField(
-              decoration: InputDecoration(label: Text('Senha')), 
+              decoration: const InputDecoration(label: Text('Senha')), 
               obscureText: true,
               onChanged: _controller.setPass,
             ),
-            SizedBox(height: 15,),
+            const SizedBox(height: 15,),
             ValueListenableBuilder<bool>(
               valueListenable: _controller.inLoader,
-              builder: (_, inLoader, __) => inLoader ? CircularProgressIndicator() : ElevatedButton(
+              builder: (_, inLoader, __) => inLoader ? const CircularProgressIndicator() : ElevatedButton(
               onPressed: () {
                 _controller.auth().then((result) {
                     if (result) {
@@ -47,7 +47,7 @@ class LoginPage extends StatelessWidget {
                     }
                   });
                 },
-                child: Text('Login'))
+                child: const Text('Login'))
               )
           ],
         )
