@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:helloworld/controllers/login_controller.dart';
 
 class LoginPage extends StatelessWidget {
-  LoginController _controller = LoginController();
+  final LoginController _controller = LoginController();
 
   LoginPage({Key? key}) : super(key: key);
 
@@ -15,7 +15,7 @@ class LoginPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.people,
+            Icon(Icons.catching_pokemon,
              size: 98,
             ),
             TextField(
@@ -27,11 +27,28 @@ class LoginPage extends StatelessWidget {
               obscureText: true,
               onChanged: _controller.setPass,
             ),
-            Spacer(),
-            ElevatedButton(onPressed: () {
-              _controller.auth();
-            },
-            child: Text('Login'))
+            SizedBox(height: 15,),
+            ValueListenableBuilder<bool>(
+              valueListenable: _controller.inLoader,
+              builder: (_, inLoader, __) => inLoader ? CircularProgressIndicator() : ElevatedButton(
+              onPressed: () {
+                _controller.auth().then((result) {
+                    if (result) {
+                     Navigator.of(context).pushReplacementNamed('/home');
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: const Text('Falha na autênticação'),
+                        duration: const Duration(seconds: 10),
+                        action: SnackBarAction(
+                          label: 'Tentar novamente',
+                          onPressed: () {}
+                        )
+                      ));
+                    }
+                  });
+                },
+                child: Text('Login'))
+              )
           ],
         )
       )
