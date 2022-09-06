@@ -18,6 +18,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     _controller.fetch();
   }
+
   @override
   Widget build(BuildContext context) {
    return Scaffold(
@@ -25,9 +26,10 @@ class _HomePageState extends State<HomePage> {
        valueListenable: _controller.posts,
        builder: (_, list, __) {
          return ListView.builder(
-           itemBuilder: (_, idx) => ListTile(
+           itemCount: list.length,
+          itemBuilder: (_, idx) => ListTile(
             title: Text(list[idx].title)
-          )
+          ),
         );
        },
       )
