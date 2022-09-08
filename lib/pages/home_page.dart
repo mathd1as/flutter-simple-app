@@ -26,13 +26,15 @@ class _HomePageState extends State<HomePage> {
       body: ValueListenableBuilder<List<PostModel>>(
         valueListenable: _controller.posts,
         builder: (_, list, __) {
-            return ListView.builder(
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: list.length,
-              shrinkWrap: true,
-              itemBuilder: (_, idx) => ListTile(
-                title: Text(list[idx].title)
-              ),
+          return ListView.separated(
+            itemCount: list.length,
+            shrinkWrap: true,
+            itemBuilder: (_, idx) => ListTile(
+              leading: Text(list[idx].id.toString()),
+              title: Text(list[idx].title),
+              trailing: Icon(Icons.arrow_right_rounded)
+            ),
+            separatorBuilder: (_, __) => const Divider(),
           );
         },
       )
