@@ -32,7 +32,8 @@ class _HomePageState extends State<HomePage> {
             itemBuilder: (_, idx) => ListTile(
               leading: Text(list[idx].id.toString()),
               title: Text(list[idx].title),
-              trailing: Icon(Icons.arrow_right_rounded)
+              trailing: Icon(Icons.arrow_right_rounded),
+              onTap: () => Navigator.of(context).pushNamed('/restaurant', arguments: list[idx]),
             ),
             separatorBuilder: (_, __) => const Divider(),
           );
