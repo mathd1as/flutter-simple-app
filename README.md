@@ -1,6 +1,6 @@
-# Lista Rango APP
+# Fullter simple APP
 
-A new Flutter project.
+Projeto simples em flutter para praticar compartilhamento de estado dentro do APP.
 
 ## Getting Started
 
